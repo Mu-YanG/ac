@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="space.lvyang.ac.mapper.LocalUserMapper" >
+  <resultMap id="BaseResultMap" type="space.lvyang.ac.entities.LocalUser" >
+    <id column="USERID" property="userid" jdbcType="BIGINT" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="USERPASSWORD" property="userpassword" jdbcType="VARCHAR" />
+    <result column="USERMAIL" property="usermail" jdbcType="VARCHAR" />
+    <result column="USERPHONE" property="userphone" jdbcType="INTEGER" />
+    <result column="USERNICKNAME" property="usernickname" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tab_local_user
+    where USERID = #{userid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="space.lvyang.ac.entities.LocalUser" >
+    insert into tab_local_user (USERID, USERNAME, USERPASSWORD, 
+      USERMAIL, USERPHONE, USERNICKNAME
+      )
+    values (#{userid,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, 
+      #{usermail,jdbcType=VARCHAR}, #{userphone,jdbcType=INTEGER}, #{usernickname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="space.lvyang.ac.entities.LocalUser" >
+    update tab_local_user
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      USERPASSWORD = #{userpassword,jdbcType=VARCHAR},
+      USERMAIL = #{usermail,jdbcType=VARCHAR},
+      USERPHONE = #{userphone,jdbcType=INTEGER},
+      USERNICKNAME = #{usernickname,jdbcType=VARCHAR}
+    where USERID = #{userid,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select USERID, USERNAME, USERPASSWORD, USERMAIL, USERPHONE, USERNICKNAME
+    from tab_local_user
+    where USERID = #{userid,jdbcType=BIGINT}
+  </select>
+
+    <select id="selectByUser" resultType="int"  parameterType="space.lvyang.ac.entities.LocalUser">
+        select COUNT(1)
+        from tab_local_user
+        where 1=1
+        <if test="username!=null">
+          and USERNAME = #{username,jdbcType=VARCHAR}
+        </if>
+      <if test="userpassword!=null">
+        and USERPASSWORD = #{userpassword,jdbcType=VARCHAR}
+      </if>
+    </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select USERID, USERNAME, USERPASSWORD, USERMAIL, USERPHONE, USERNICKNAME
+    from tab_local_user
+  </select>
+</mapper>
