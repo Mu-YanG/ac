@@ -109,16 +109,13 @@
             submit: function() {
 
                 if(this.isFormValid()) {
-                    $.ajax(
-                        "/ac/loginAc",
-						{
-						    username:'1',
-							userpassword:'1'
-						},
-                        function(data){
-                            alert(1);
-                            //console.log(data);
-                        });
+
+                    $.ajax({ url: "/ac/loginAc",  data:{
+                        username:'1',
+                        userpassword:'1'
+                    } , success: function(data){
+
+                    }});
                 }
                 return false;
             }

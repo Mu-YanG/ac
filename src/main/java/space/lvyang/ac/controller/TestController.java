@@ -18,4 +18,10 @@ public class TestController {
         System.out.println("2");
         return "test2";
     }
+    @RequestMapping("test2")
+    @ResponseBody
+    public String tesLHttp(){
+        System.out.println("2");
+        return "test22";
+    }
 }

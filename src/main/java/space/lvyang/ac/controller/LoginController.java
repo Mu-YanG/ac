@@ -18,6 +18,8 @@ public class LoginController {
 
 
         if (localUserService.selectUserByName(usr)){
+
+
             return "sucess";
         }else
             return  "error";
@@ -25,7 +27,6 @@ public class LoginController {
     }
     @RequestMapping("login")
     public String toLogin(){
-
        return "login";
     }
 

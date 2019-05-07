@@ -109,14 +109,13 @@
             submit: function() {
 
                 if(this.isFormValid()) {
-                    $.post(
-                        "{:url('index/msg')}",
-                        $("input[type=\'text\'],input[type='email'],select"),
-                        function(d){
 
-                            console.log(d);
-                        }
-                        , "json");
+                    $.ajax({ url: "/ac/loginAc",  data:{
+                        username:'1',
+                        userpassword:'1'
+                    } , success: function(data){
+
+                    }});
                 }
                 return false;
             }
