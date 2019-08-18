@@ -9,7 +9,6 @@ import org.springframework.context.annotation.ImportResource;
 @ServletComponentScan
 @ImportResource(locations = { "classpath:druid-been.xml" })
 public class AcApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(AcApplication.class, args);
 	}
