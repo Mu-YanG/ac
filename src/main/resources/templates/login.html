@@ -111,17 +111,15 @@
                 if(this.isFormValid()) {
 
                     $.ajax({ url: "/ac/loginAc",  data:{
-                        username:'1',
+                        username:1,
                         userpassword:'1'
                     } , success: function(data){
-
+                       alert(data);
                     }});
                 }
                 return false;
             }
         });
-
-
         var validator = $form.data('amui.validator');
 
         $form.on('focusin focusout', '.am-form-error input', function(e) {
@@ -139,12 +137,6 @@
                 $tooltip.hide();
             }
         });
-
-
-
-
-
-
 
     })
 
