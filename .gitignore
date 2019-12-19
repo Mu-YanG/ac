@@ -1,1 +1,6 @@
 /.idea
+
+/front/acfront/node_modules
+/front/acfront/dist
+/src/main/webapp
+/target
